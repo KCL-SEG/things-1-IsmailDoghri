@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MaxValueValidator
+from django.core.validators import MinValueValidator
 
 class Thing(models.Model):
     name = models.CharField(
@@ -7,11 +9,16 @@ class Thing(models.Model):
         blank=False
     )
     description = models.TextField(
-        max_length=50,
+        max_length=120,
         unique=False,
         blank=True
     )
     quantity = models.IntegerField(
         unique=False,
-        blank=False
+        blank=False,
+        validators=[MaxValueValidator(
+            limit_value=100
+            ),MinValueValidator(
+            limit_value=0
+            )]
     )
