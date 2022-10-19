@@ -1,15 +1,16 @@
 from django.db.models import Model
+from django.db import models
 
 class Thing(Model):
-    name = CharField(
+    name = models.CharField(
         unique=True,
         blank=False
     )
-    description = TextField(
+    description = models.TextField(
         unique=False,
         blank=True
     )
-    quantity = IntegerField(
+    quantity = models.IntegerField(
         unique=False,
         blank=False
     )
